@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.11.1'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.15'
+gem 'pg', '~> 0.20.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -29,12 +29,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'devise', '~> 4.7.1'
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'ip_format_validator', '~> 0.0.2'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'capybara', '>= 2.15'
+  gem 'factory_bot_rails'
 end
 
 group :development do
