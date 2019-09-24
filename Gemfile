@@ -31,7 +31,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise', '~> 4.7.1'
 gem 'activeadmin', '~> 1.0.0.pre2'
-gem 'ip_format_validator', '~> 0.0.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

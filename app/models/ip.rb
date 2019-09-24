@@ -8,6 +8,6 @@ class Ip < ActiveRecord::Base
   private
 
   def valid_ip
-    errors.add(:address, "invalid ip address") if (IPAddr.new(str) rescue nil).nil?
+    errors.add(:address, "invalid ip address") if (IPAddr.new(self.address) rescue nil).nil?
   end
 end

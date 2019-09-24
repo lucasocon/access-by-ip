@@ -109,8 +109,6 @@ GEM
       has_scope (~> 0.6)
       railties (>= 4.2, < 5.3)
       responders
-    ip_format_validator (0.0.2)
-      activemodel
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.3.5)
@@ -255,7 +253,6 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise (~> 4.7.1)
   factory_bot_rails
-  ip_format_validator (~> 0.0.2)
   jbuilder (~> 2.0)
   jquery-rails
   pg (~> 0.20.0)

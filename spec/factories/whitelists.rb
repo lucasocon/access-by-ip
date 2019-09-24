@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :whitelist do
-    company { nil }
-    name { "MyString" }
+    name { "My Whitelist" }
   end
 end

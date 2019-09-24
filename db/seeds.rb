@@ -13,3 +13,4 @@ user = User.create!(email: 'admin@test.com', password: '123456', password_confir
 User.create!(email: 'user@email.com', password: '123456', password_confirmation: '123456', company_id: company.id)
 
 company.responsible_id = user.id
+company.save!

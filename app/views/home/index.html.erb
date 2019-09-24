@@ -1,2 +1,10 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Home</h1>
+<% if user_signed_in? %>
+  <%= link_to destroy_user_session_path,  method: :delete do %>
+    <p style="font-size: 1.5em;">Log Out</p>
+  <% end %>
+<% else %>
+  <%= link_to new_user_session_path do %>
+    <p style="font-size: 1.5em;">Log In</p>
+  <% end %>
+<% end %>

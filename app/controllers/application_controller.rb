@@ -6,17 +6,21 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_ip_addreess
 
   def authenticate_active_admin_user!
-    unless Company.find_by(responsible_id: current_user.id)
+    if current_user.company.responsible_id != current_user.id
       flash[:alert] = "Unauthorized Access!"
       redirect_to root_path
     end
   end
 
+  def after_sign_in_path_for(resource_or_scope)
+    current_user.company.responsible_id == current_user.id ? admin_root_path : root_path
+  end
+
   def authenticate_ip_addreess
-    if current_user
+    if current_user && current_user.company.responsible_id != current_user.id
       user_ip = IPAddr.new(request.remote_ip)
       # An array of IPs should be allowed. Stored on the company.
-      allowed_ips = current_user.company.whitelist.ips unless Company.find_by(responsible_id: current_user.id)
+      allowed_ips = current_user.company.whitelist.ips if current_user.company.whitelist
 
       # Validate IP only if allowed_ips array is set, otherwise there is no IP restriction
       if allowed_ips && !allowed_ips.empty?
