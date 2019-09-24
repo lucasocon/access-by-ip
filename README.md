@@ -7,7 +7,7 @@ Is a project of security login that ensure only the desired users can be enter o
 
 ### Installation
 Clone this repository, you will need:
-* ruby ruby 2.4.6
+* ruby 2.4.6
 * rails 4.2.11.1
 * nvm or rbenv
 * postgresql
