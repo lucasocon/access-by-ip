@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_ip_addreess
     if current_user && current_user.company.responsible_id != current_user.id
-      result = IpAuthenticatorService.new(current_user, request).call
+      result = IpAuthenticatorService.new(current_user, request.remote_ip).call
       return true if result
 
       sign_out current_user
