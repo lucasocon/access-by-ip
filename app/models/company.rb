@@ -5,7 +5,7 @@ class Company < ActiveRecord::Base
   belongs_to :responsible, class_name: 'User', foreign_key: :responsible_id
 
   validates_presence_of :name
-  validates :timezone, inclusion: ActiveSupport::TimeZone.zones_map.values.map{ |e| e.name }
+  validates :timezone, inclusion: ActiveSupport::TimeZone.zones_map.values.map { |e| e.name }
 
   enum customers_type: {
     regular_customers: 'regular',

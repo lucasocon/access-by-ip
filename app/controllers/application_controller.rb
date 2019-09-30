@@ -18,25 +18,11 @@ class ApplicationController < ActionController::Base
 
   def authenticate_ip_addreess
     if current_user && current_user.company.responsible_id != current_user.id
-      user_ip = IPAddr.new(request.remote_ip)
-      # An array of IPs should be allowed. Stored on the company.
-      allowed_ips = current_user.company.whitelist.ips if current_user.company.whitelist
+      result = IpAuthenticatorService.new(current_user, request).call
+      return true if result
 
-      # Validate IP only if allowed_ips array is set, otherwise there is no IP restriction
-      if allowed_ips && !allowed_ips.empty?
-        verified = false
-
-        allowed_ips.each do |allowed_ip|
-          allowed_ip = IPAddr.new(allowed_ip.address)
-          verified = true if allowed_ip.include?(user_ip)
-        end
-
-        # Redirect back to main page if not verified
-        unless verified
-          sign_out current_user
-          redirect_to user_session_path, notice: "You cannot access from your ip"
-        end
-      end
+      sign_out current_user
+      redirect_to user_session_path, notice: 'You cannot access from your ip'
     end
   end
 end
