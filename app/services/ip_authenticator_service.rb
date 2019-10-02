@@ -9,7 +9,7 @@ class IpAuthenticatorService
 
     user_ip = IPAddr.new(@remote_ip)
     # An array of IPs should be allowed. Stored on the company.
-    allowed_ips = @user.company.whitelist.ips
+    allowed_ips = @user.company_whitelist_ips
 
     # Validate IP only if allowed_ips array is set, otherwise there is no IP restriction
     if allowed_ips && !allowed_ips.empty?

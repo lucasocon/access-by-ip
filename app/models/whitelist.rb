@@ -9,11 +9,19 @@ class Whitelist < ActiveRecord::Base
   validates_associated :ips, on: %i[create update]
 
   validate :only_one_whitelist_by_company, on: %i[create]
+  validate :uniques_ip, on: %i[create update]
 
   private
 
+  def uniques_ip
+    addresses = ips.map { |ip| ip.address }
+    if addresses.uniq.length != addresses.length
+      errors.add(:whitelist, 'There are duplicate ips')
+    end
+  end
+
   def only_one_whitelist_by_company
-    unless Company.find(company.id).whitelist.nil?
+    if Whitelist.where(company_id: company_id).size > 0
       errors.add(:whitelist, 'The Company already has a whitelist registered')
     end
   end

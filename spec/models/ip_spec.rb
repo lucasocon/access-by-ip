@@ -17,11 +17,11 @@ RSpec.describe Ip, type: :model do
   end
 
   it 'should be create a new ip record' do
-    @company = create(:company)
-    ip = create(:valid_ip)
-    @whitelist = create(:whitelist, company_id: @company.id, ips: [ip])
+    company = create(:company)
+    ip = create(:my_ip)
+    whitelist = create(:whitelist, company_id: company.id, ips: [ip])
 
-    expect(ip.whitelist_id).to eq(@whitelist.id)
+    expect(ip.whitelist_id).to eq(whitelist.id)
     expect(ip.address).to eq("127.0.0.1")
   end
 end

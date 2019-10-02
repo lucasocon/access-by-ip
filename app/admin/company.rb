@@ -1,5 +1,5 @@
 ActiveAdmin.register Company do
-  permit_params :name, :responsible_id, :customers_type, :timezone,
+  permit_params :name, :responsible_id, :customers_type, :timezone
 
   index do
     id_column

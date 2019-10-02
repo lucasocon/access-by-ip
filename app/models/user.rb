@@ -7,4 +7,10 @@ class User < ActiveRecord::Base
   belongs_to :company
 
   validates_presence_of :company
+
+  delegate :whitelist_ips, prefix: :company, to: :company
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

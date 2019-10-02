@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :ip do
-    factory :valid_ip do
+    factory :my_ip do
       address { "127.0.0.1" }
     end
 
-    factory :invalid_ip do
+    factory :another_ip do
       address { "192.168.15.1" }
     end
   end

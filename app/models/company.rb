@@ -18,4 +18,8 @@ class Company < ActiveRecord::Base
   alias :has_clients? :regular_customers?
 
   alias :has_funds :has_funds?
+
+  def whitelist_ips
+    whitelist.ips
+  end
 end
